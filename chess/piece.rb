@@ -1,7 +1,6 @@
 class Piece
 
-    attr_reader :symbol
-    # attr_accessor :current_pos, :board
+    attr_reader :symbol, :color
 
     def initialize(color)
         @color = color
@@ -9,8 +8,6 @@ class Piece
     end
 
     def valid_moves(current_board, position)
-        # @board = current_board
-        # @position = position
         moves = []
         (0..7).each do |row|            
             (0..7).each do |col| 

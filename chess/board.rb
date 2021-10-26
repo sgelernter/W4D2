@@ -1,3 +1,4 @@
+require "byebug"
 require_relative "piece.rb"
 require_relative "nullpiece.rb"
 
@@ -8,7 +9,7 @@ class Board
         (0..7).each do |row|
             (0..7).each do |col|
                 if row < 2 || row > 5
-                    @grid[row][col] = Piece.new
+                    @grid[row][col] = Piece.new(:white)
                 else
                     @grid[row][col] = NullPiece.new
                 end
@@ -44,7 +45,9 @@ class Board
     end
 end
 
-# b = Board.new
+b = Board.new
+b.move_piece([0,1], [2,0])
+p b[[0,0]].valid_moves(b, [0,0])
 # p b.move_piece([0,0], [3,0])
 # p b.move_piece([3,0], [7,7])
 # p b.move_piece([7,7], [8,9])
