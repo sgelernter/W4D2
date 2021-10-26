@@ -38,7 +38,7 @@ class Board
 
     def move_piece(start_pos, end_pos)
         raise "Please choose a spot with a piece!" if self[start_pos].instance_of?(NullPiece)
-        raise "That piece can't go there!" if !self[start_pos].valid_moves(self, start_pos).include?(end_pos)
+        # raise "That piece can't go there!" if !self[start_pos].valid_moves(self, start_pos).include?(end_pos)
         self[end_pos] = self[start_pos]
         self[start_pos] = NullPiece.new
         self
@@ -46,8 +46,9 @@ class Board
 end
 
 b = Board.new
-b.move_piece([0,1], [2,0])
-p b[[0,0]].valid_moves(b, [0,0])
+b.render
+b.move_piece([1,0], [2,0])
+p b[[2,0]].valid_moves(b, [2,0])
 # p b.move_piece([0,0], [3,0])
 # p b.move_piece([3,0], [7,7])
 # p b.move_piece([7,7], [8,9])
