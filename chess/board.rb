@@ -15,7 +15,37 @@ class Board
             end
         end
     end
+
+    def [](pos)
+        row, col = pos
+        @grid[row][col]
+    end
+
+    def []=(pos, val)
+        row, col = pos
+        @grid[row][col] = val
+    end 
+    
+    def render
+        (0..7).each do |row|
+            (0..7).each do |col|
+               print  "#{@grid[row][col].symbol}  "
+            end
+            puts
+        end
+    end
+
+    def move_piece(start_pos, end_pos)
+        raise "Please choose a spot with a piece!" if self[start_pos].instance_of?(NullPiece)
+        raise "That piece can't go there!" if !self[start_pos].valid_moves.include?(end_pos)
+        self[end_pos] = self[start_pos]
+        self[start_pos] = NullPiece.new
+        self
+    end
 end
 
-b = Board.new
-p b.grid.length
+# b = Board.new
+# p b.move_piece([0,0], [3,0])
+# p b.move_piece([3,0], [7,7])
+# p b.move_piece([7,7], [8,9])
+# p b.move_piece([4,7], [3,3])
