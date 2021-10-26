@@ -37,7 +37,7 @@ class Board
 
     def move_piece(start_pos, end_pos)
         raise "Please choose a spot with a piece!" if self[start_pos].instance_of?(NullPiece)
-        raise "That piece can't go there!" if !self[start_pos].valid_moves.include?(end_pos)
+        raise "That piece can't go there!" if !self[start_pos].valid_moves(self, start_pos).include?(end_pos)
         self[end_pos] = self[start_pos]
         self[start_pos] = NullPiece.new
         self

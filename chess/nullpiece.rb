@@ -3,6 +3,7 @@
 class NullPiece < Piece
 
     def initialize
+        super(:empty)
         @symbol = :null
     end
     
