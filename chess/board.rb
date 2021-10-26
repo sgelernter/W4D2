@@ -4,14 +4,15 @@ require_relative "nullpiece.rb"
 
 class Board
     attr_reader :grid
-    def initialize
+    def initialize 
         @grid = Array.new(8) {Array.new(8)}
         (0..7).each do |row|
             (0..7).each do |col|
                 if row < 2 || row > 5
+                    #what's the position ==> ask pieces if any of them start there, if so initialize that piece there
                     @grid[row][col] = Piece.new(:white)
                 else
-                    @grid[row][col] = NullPiece.new
+                    @grid[row][col] = NullPiece.instance
                 end
             end
         end
@@ -47,8 +48,9 @@ end
 
 b = Board.new
 b.render
-b.move_piece([1,0], [2,0])
-p b[[2,0]].valid_moves(b, [2,0])
+# b.move_piece([1,3], [3,3])
+
+# p b[[3,3]].valid_moves(b, [3,3])
 # p b.move_piece([0,0], [3,0])
 # p b.move_piece([3,0], [7,7])
 # p b.move_piece([7,7], [8,9])

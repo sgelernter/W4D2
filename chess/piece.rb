@@ -1,8 +1,8 @@
-require_relative "slideable.rb"
+require_relative "steppable.rb"
 require "byebug"
 
 class Piece
-    include Slideable
+    include Steppable
 
     attr_reader :symbol, :color
 
@@ -20,7 +20,8 @@ class Piece
                 end
             end
         end
-        horizontal_moves(moves, position, current_board)
+        moves
+        # get_moves(moves, position, [[0, 1], [1, 1], [1,0], [-1, 1], [-1, -1], [-1, 0], [0, -1], [1, -1]])
     end
 
     def inspect
